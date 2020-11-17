@@ -17,6 +17,8 @@ import kotlinx.android.synthetic.main.activity_login.*
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var viewModel: UsersViewModel
+    var userEncontrado = false
+    var userSenhaOk = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,16 +42,24 @@ class LoginActivity : AppCompatActivity() {
         findViewById<AppCompatButton>(R.id.btLoginEntrar).setOnClickListener {
             if(!emailError(tilEmail) && !senhaError(tilSenha)){
                 UserRepository.UsersLogin.usersList.forEach {
-                    if(it.userEmail == tilEmail.editText?.text.toString() && it.userPass == tilSenha.editText?.text.toString()){
-                        val mIntent = Intent(this, HomeActivity::class.java)
-                        startActivity(mIntent)
-                        finish()
-                    }else if(it.userEmail == tilEmail.editText?.text.toString() && it.userPass != tilSenha.editText?.text.toString()){
-                        tilSenha.error = "Senha está errada"
-                    }else{
-                        tilEmail.error = "Email está errado"
+                    if(it.userEmail == tilEmail.editText?.text.toString()){
+                        userEncontrado = true
+                        if(it.userPass == tilSenha.editText?.text.toString()){
+                            val mIntent = Intent(this, HomeActivity::class.java)
+                            userSenhaOk = true
+                            startActivity(mIntent)
+                            finish()
+                        }
+
                     }
                 }
+                if(!userEncontrado){
+                    tilEmail.error = getString(R.string.emailErrado)
+                }else if(userEncontrado && !userSenhaOk){
+                    tilEmail.error = getString(R.string.senhaErrada)
+
+                }
+
             }
 
         }

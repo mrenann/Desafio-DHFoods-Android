@@ -19,5 +19,7 @@
     <string name="usuarioCadastrado">Usuário Cadastrado com Sucesso</string>
     <string name="entrar">Entrar</string>
     <string name="registrar">Registrar</string>
+    <string name="emailErrado">Usuário com esse Email não encontrado</string>
+    <string name="senhaErrada">Senha Errada</string>
 
 </resources>
