@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".view.activity.RestauranteActivity"
+    android:layout_marginBottom="?attr/actionBarSize">
+
+    <ImageView
+        android:id="@+id/ivRestauranteActivityPhoto"
+        android:layout_width="match_parent"
+        android:layout_height="220sp"
+        android:src="@drawable/ic_launcher_background"
+        android:scaleType="centerCrop"
+        android:alpha="0.4"
+        android:contentDescription="Imagem Restaurante"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <ImageButton
+        android:id="@+id/backButtonRestaurante"
+        style="@style/BackButtonDefault"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="30dp"
+        />
+
+    <TextView
+        android:id="@+id/tvRestauranteActivityName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tony Roma's"
+        android:textSize="36sp"
+        android:textAppearance="?attr/textAppearanceHeadline6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/ivRestauranteActivityPhoto"
+        android:layout_margin="8sp"
+        />
+
+    <TextView
+        android:id="@+id/tvRestauranteActivityPratosPrincipais"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pratos_principais"
+        android:textSize="36sp"
+        android:textAppearance="?attr/textAppearanceHeadline6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivRestauranteActivityPhoto"
+        android:layout_marginStart="6sp"
+        android:layout_marginTop="20sp"
+        android:textColor="#5A6978"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPratoRestauranteList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="300sp"
+        tools:listitem="@layout/pratos_list_item"
+        tools:itemCount="3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvRestauranteActivityPratosPrincipais"/>
+
+    <TextView
+        android:id="@+id/tvNaoPossuiPratos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="O restaurante não possui nenhum prato"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="@id/rvPratoRestauranteList" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
