@@ -11,6 +11,7 @@ import com.example.dh_foods.models.repository.UserRepository
 import com.example.dh_foods.viewModel.UsersViewModel
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.activity_register.tilEmail
 import kotlinx.android.synthetic.main.activity_register.tilSenha
@@ -44,7 +45,7 @@ class RegisterActivity : AppCompatActivity() {
             if(!nomeError(tilNome) && !emailError(tilEmail) && !senhaError(tilSenha) && !confirmarSenhaError(tilConfirmarSenha,tilSenha)){
                 UserRepository.UsersLogin.usersList.add(User(tilEmail.editText?.text.toString(),tilNome.editText?.text.toString(),tilSenha.editText?.text.toString()))
 
-                Snackbar.make(findViewById(R.id.activity_register), "Usuário Cadastrado com Sucesso", Snackbar.LENGTH_LONG)
+                Snackbar.make(findViewById(R.id.activity_register), getString(R.string.usuarioCadastrado), Snackbar.LENGTH_LONG)
                         .setDuration(300)
                         .show()
                 finish()
@@ -56,7 +57,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun nomeError(til: TextInputLayout): Boolean{
         return if(til.editText?.length() == 0){
-            til.error = "Nome Não pode estar vazio"
+            til.error = activity_register.context.getString(R.string.erroVazio,"Nome" )
             true
         }else {
             til.isErrorEnabled = false
@@ -66,11 +67,11 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun emailError(til: TextInputLayout): Boolean{
         return if(til.editText?.length() == 0){
-            til.error = "Email Não pode estar vazio"
+            til.error = activity_register.context.getString(R.string.erroVazio,"Email" )
             true
         }
         else if(!android.util.Patterns.EMAIL_ADDRESS.matcher(til.editText?.text.toString()).matches()){
-            til.error = "Email Inválido"
+            til.error = activity_register.context.getString(R.string.campoInvalido,"Email" )
             true
         }else {
             til.isErrorEnabled = false
@@ -80,7 +81,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun senhaError(til: TextInputLayout): Boolean{
         return if(til.editText?.length() == 0){
-            til.error = "Senha Não pode estar vazia"
+            til.error = activity_register.context.getString(R.string.erroVazio,"Senha" )
             true
         }else {
             til.isErrorEnabled = false
@@ -91,12 +92,12 @@ class RegisterActivity : AppCompatActivity() {
     private fun confirmarSenhaError(til: TextInputLayout,tilSenha: TextInputLayout): Boolean{
         return when {
             til.editText?.length() == 0 -> {
-                til.error = "Confirmação de Senha Não pode estar vazia"
+                til.error = activity_register.context.getString(R.string.erroVazio,"Confirmação de Senha" )
                 true
             }
             til.editText?.text.toString() != tilSenha.editText?.text.toString() -> {
-                til.error = "Senhas não coincidem"
-                tilSenha.error = "Senhas não coincidem"
+                til.error = getString(R.string.senhasDiferentes)
+                tilSenha.error = getString(R.string.senhasDiferentes)
                 true
             }
             else -> {

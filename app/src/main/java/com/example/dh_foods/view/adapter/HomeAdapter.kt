@@ -42,7 +42,6 @@ class HomeAdapter(
             findViewById<TextView>(R.id.tvRestauranteName).text = restaurante.nome
             findViewById<TextView>(R.id.tvRestauranteLocation).text = restaurante.localizacao
             findViewById<TextView>(R.id.tvRestauranteFechamento).text = context.getString(R.string.quandoFecha, restaurante.fechamento)
-
             findViewById<ViewGroup>(R.id.vgRestauranteItemContainer).setOnClickListener {
                 onItemClicked(this@ViewHolder.adapterPosition)
             }

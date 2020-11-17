@@ -9,10 +9,15 @@
     <string name="nome">Nome</string>
 
     <string name="quandoFecha">Fecha às %1$s</string>
+    <string name="erroVazio">Campo %1$s não pode estar vazio</string>
+    <string name="campoInvalido">Campo %1$s Inválido!</string>
     <string name="pratos_principais">Pratos Principais</string>
-    <string name="registrar">Registrar</string>
     <string name="imagem_restaurante">Imagem Restaurante</string>
     <string name="backbutton">Botão de Voltar</string>
     <string name="imagem_prato">Imagem Prato</string>
+    <string name="senhasDiferentes">Senhas não coincidem</string>
+    <string name="usuarioCadastrado">Usuário Cadastrado com Sucesso</string>
+    <string name="entrar">Entrar</string>
+    <string name="registrar">Registrar</string>
 
 </resources>

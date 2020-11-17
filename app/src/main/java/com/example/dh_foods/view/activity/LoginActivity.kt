@@ -62,11 +62,11 @@ class LoginActivity : AppCompatActivity() {
 
     private fun emailError(til: TextInputLayout): Boolean{
         return if(til.editText?.length() == 0){
-            til.error = "Email Não pode estar vazio"
+            til.error = activity_login.context.getString(R.string.erroVazio,"Email" )
             true
         }
         else if(!android.util.Patterns.EMAIL_ADDRESS.matcher(til.editText?.text.toString()).matches()){
-            til.error = "Email Inválido"
+            til.error =  activity_login.context.getString(R.string.campoInvalido,"Email" )
             true
         }else {
             til.isErrorEnabled = false
@@ -76,7 +76,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun senhaError(til: TextInputLayout): Boolean{
         return if(til.editText?.length() == 0){
-            til.error = "Senha Não pode estar vazio"
+            til.error = activity_login.context.getString(R.string.erroVazio,"Senha" )
             true
         }else {
             til.isErrorEnabled = false
